@@ -1,44 +1,51 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import { ClientService } from '../../client.service';
 import { CommonModule } from '@angular/common';
 import { Client } from '../../types';
-
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-//   {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-//   {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-//   {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-//   {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-//   {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-//   {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-//   {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-//   {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-//   {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-// ];
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-in-service',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatTableModule],
+  imports: [CommonModule, MatCardModule, MatTableModule, MatButtonModule, MatDividerModule],
   templateUrl: './in-service.component.html',
   styleUrl: './in-service.component.scss'
 })
 
 
 
-export class InServiceComponent {
+export class InServiceComponent implements OnInit {
+
+  dataSourceObservable$: Observable<Client[]> = this.clientService.inServiceClients$
+  nextButton = true;
+
   displayedColumns: string[] = ['id', 'FullName', 'dateTime'];
   dataSource: Client[] = [];
 
   constructor (public clientService: ClientService) {
-    this.clientService.getClients()
+  }
 
-    this.clientService.clients$
+  dateMapCalback(item: Client): Client {
+    return {
+      ...item,
+      dateTime: item?.dateTime && new Date(item.dateTime).toLocaleTimeString().slice(0, -3)
+    }
+  }
+
+  ngOnInit(): void {
+
+    this.dataSourceObservable$
       .subscribe(list => {
-        this.dataSource = list
+        this.dataSource = list.map(this.dateMapCalback)
       })
+  }
+
+  nextClientHandle() {
+    this.clientService.nextClient()
   }
 
 }

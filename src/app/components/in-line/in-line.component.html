@@ -1,1 +1,36 @@
-<p>in-line works!</p>
+<div class="page">
+    <mat-card>
+        <mat-card-content>
+            <mat-form-field class="custom-input">
+                <mat-label>Full name</mat-label>
+                <input matInput [formControl]="name" class="custom-input">
+                <mat-hint>Name of the client you’re going to add in the line</mat-hint>
+              </mat-form-field>
+              <button mat-raised-button [disabled]="name.invalid" (click)="createClient()">+ Add to the line</button>
+        </mat-card-content>
+      </mat-card>
+    <mat-card>
+        <mat-card-content>
+            <table mat-table [dataSource]="dataSource" >
+
+                <ng-container matColumnDef="id">
+                  <th mat-header-cell *matHeaderCellDef> Number in line </th>
+                  <td mat-cell *matCellDef="let element"> {{element?.id}} </td>
+                </ng-container>
+              
+                <ng-container matColumnDef="FullName">
+                  <th mat-header-cell *matHeaderCellDef> Full Name </th>
+                  <td mat-cell *matCellDef="let element"> {{element?.FullName}} </td>
+                </ng-container>
+              
+                <ng-container matColumnDef="dateTime">
+                  <th mat-header-cell *matHeaderCellDef> Check-in time </th>
+                  <td mat-cell *matCellDef="let element"> {{element?.dateTime}} </td>
+                </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+        </mat-card-content>
+      </mat-card>
+</div>

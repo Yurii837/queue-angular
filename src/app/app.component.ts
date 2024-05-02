@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { InLineComponent } from './components/in-line/in-line.component';
 import { InServiceComponent } from './components/in-service/in-service.component';
+import { ClientService } from './client.service';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +14,6 @@ import { InServiceComponent } from './components/in-service/in-service.component
   imports: [RouterOutlet,
     CommonModule,
     FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
     InLineComponent,
     InServiceComponent
   ],
@@ -22,5 +21,7 @@ import { InServiceComponent } from './components/in-service/in-service.component
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'queue-angular';
+  constructor (public clientService: ClientService) {
+    this.clientService.getClients()
+}
 }
