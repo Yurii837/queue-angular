@@ -1,3 +1,29 @@
 .main-page {
-    
+
+    &__nav {
+        padding: 14px 5.7vw;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+        display: flex;
+        gap: 10px;
+    }
+
+    &__logo {
+        display: inline-block;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background-color: rgb(231, 255, 251)
+    }
+
+    &__logo-title {
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 32px;
+        letter-spacing: 0.15000000596046448px;
+        text-align: left;
+    }
+
+    &__content{
+        padding: 12px 5.7vw;
+    }
 }

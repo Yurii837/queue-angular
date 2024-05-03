@@ -6,7 +6,8 @@
                 <mat-label>Full name</mat-label>
                 <input matInput [formControl]="name" class="custom-input">
                 <mat-hint 
-                [ngStyle]="name.invalid && name.touched ? { color: 'red' } : {}"
+                  class="action-content__hint"
+                  [ngStyle]="name.invalid && name.touched ? { color: 'red' } : {}"
                 >
                 {{ 
                 name.invalid && name.touched 
@@ -14,7 +15,9 @@
                 : 'Name of the client you’re going to add in the line'}}
                 </mat-hint>
               </mat-form-field>
-              <button class="page__btn-radius" mat-raised-button [disabled]="name.invalid" (click)="createClient()">+ Add to the line</button>
+              <div class="action-content__btn-wrapper">
+                <button class="page__btn-radius" mat-raised-button [disabled]="name.invalid" (click)="createClient()">+ Add to the line</button>
+              </div>
         </mat-card-content>
       </mat-card>
     <mat-card class="page__card-shadow">
