@@ -1,6 +1,7 @@
 <div class="page">
-    <mat-card>
-        <mat-card-content>
+  <div class="page__title">In service</div>
+    <mat-card class="page__card-shadow">
+        <mat-card-content class="page__card-content">
             <table mat-table [dataSource]="dataSource" >
 
                 <ng-container matColumnDef="id">
@@ -22,7 +23,7 @@
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
               </table>
 
-              <button *ngIf="nextButton" mat-flat-button color="primary" style="float: right;" (click)="nextClientHandle()">Next client</button>
+              <button *ngIf="nextButton" class="page__btn-radius" mat-flat-button color="primary" style="float: right;" (click)="nextClientHandle()">Next client</button>
         </mat-card-content>
       </mat-card>
 </div>

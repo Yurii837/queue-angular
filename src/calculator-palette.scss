@@ -1,0 +1,75 @@
+@use '@angular/material' as mat;
+// @import '@angular/material/theming';
+
+$mat-myapp-primary: (
+    50: #DBFFF8,
+    100: #B3FFF1,
+    200: #6BFFE4,
+    300: #1FFFD6,
+    400: #00D1AB,
+    500: #00866E,
+    600: #006B57,
+    700: #005243,
+    800: #00382E,
+    900: #001915,
+    A100: #e7fff8,
+    A200: #b4ffe9,
+    A400: #81ffda,
+    A700: #68ffd3,
+    contrast: (
+        50: white,
+        100: white,
+        200: white,
+        300: white,
+        400: white,
+        500: white,
+        600: white,
+        700: white,
+        800: white,
+        900: white,
+        A100: white,
+        A200: white,
+        A400: white,
+        A700: white,
+    )
+);
+
+$mat-myapp-accent: (
+    50: #ffffff,
+    100: #fff7f4,
+    200: #fecdbd,
+    300: #fc9977,
+    400: #fc8259,
+    500: #fb6c3b,
+    600: #fa551d,
+    700: #f44205,
+    800: #d63a04,
+    900: #b83204,
+    A100: #ffffff,
+    A200: #fff7f4,
+    A400: #fc8259,
+    A700: #f44205,
+    contrast: (
+        50: white,
+        100: white,
+        200: white,
+        300: white,
+        400: white,
+        500: white,
+        600: white,
+        700: white,
+        800: white,
+        900: white,
+        A100: white,
+        A200: white,
+        A400: white,
+        A700: white,
+    )
+);
+
+$primary: mat.define-palette($mat-myapp-primary);
+$accent: mat.define-palette($mat-myapp-accent);
+
+$theme: mat.define-light-theme($primary, $accent);
+
+@include mat.all-component-themes($theme);

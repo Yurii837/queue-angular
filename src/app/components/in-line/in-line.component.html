@@ -1,17 +1,25 @@
 <div class="page">
-    <mat-card>
-        <mat-card-content>
+    <div class="page__title">Clients in line</div>
+    <mat-card class="page__card-shadow">
+        <mat-card-content class="page__card-content action-content">
             <mat-form-field class="custom-input">
                 <mat-label>Full name</mat-label>
                 <input matInput [formControl]="name" class="custom-input">
-                <mat-hint>Name of the client you’re going to add in the line</mat-hint>
+                <mat-hint 
+                [ngStyle]="name.invalid && name.touched ? { color: 'red' } : {}"
+                >
+                {{ 
+                name.invalid && name.touched 
+                ? 'Name is required' 
+                : 'Name of the client you’re going to add in the line'}}
+                </mat-hint>
               </mat-form-field>
-              <button mat-raised-button [disabled]="name.invalid" (click)="createClient()">+ Add to the line</button>
+              <button class="page__btn-radius" mat-raised-button [disabled]="name.invalid" (click)="createClient()">+ Add to the line</button>
         </mat-card-content>
       </mat-card>
-    <mat-card>
-        <mat-card-content>
-            <table mat-table [dataSource]="dataSource" >
+    <mat-card class="page__card-shadow">
+        <mat-card-content class="page__card-content">
+            <table mat-table [dataSource]="dataSource">
 
                 <ng-container matColumnDef="id">
                   <th mat-header-cell *matHeaderCellDef> Number in line </th>

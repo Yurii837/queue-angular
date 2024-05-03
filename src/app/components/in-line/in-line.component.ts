@@ -3,7 +3,7 @@ import { InServiceComponent } from '../in-service/in-service.component';
 import { Component} from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgClass, NgStyle } from '@angular/common';
 import { Client } from '../../types';
 import { Observable } from 'rxjs';
 import {MatButtonModule} from '@angular/material/button';
@@ -14,7 +14,15 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 @Component({
   selector: 'app-in-line',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatTableModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule],
+  imports: [CommonModule, 
+    MatCardModule, 
+    MatTableModule, 
+    ReactiveFormsModule, 
+    MatFormFieldModule, 
+    MatInputModule, 
+    FormsModule, 
+    MatButtonModule,
+    NgClass, NgStyle],
   templateUrl: './in-line.component.html',
   styleUrl: './in-line.component.scss'
 })

@@ -1,3 +1,10 @@
+// @import '@angular/material/theming';
+
+// .my-class-with-custom-shadow {
+//   // Adds a shadow for elevation level 2 with color #e91e63 and 80% of the default opacity:
+//   @include mat-elevation(2, #e91e63, 0.8);
+// }
+
 .custom-input {
     width: 60%;
 
@@ -7,8 +14,50 @@
     //   }
 }
 
-.mat-mdc-text-field-wrapper {
+::ng-deep .mat-mdc-text-field-wrapper {
     border: 1px solid #afa9a9;
-    border-radius: 4px;
+    border-radius: 8px !important;
     padding: 8px;
 }
+
+  // disable mat-input underline
+  ::ng-deep .mdc-line-ripple {
+    display: none;
+}
+
+
+::ng-deep .page {
+
+    &__title {
+        margin: 28px 0;
+        font-size: 34px;
+        font-weight: 700;
+        line-height: 41.99px;
+        letter-spacing: 0.25px;
+        text-align: left;
+    }
+
+    &__card-content {
+        padding: 16px 24px;
+    }
+
+    &__card-shadow {
+        box-shadow: 0px 3px 1px -1px rgba(0, 0, 0, 0.2),
+             0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 4px rgba(0, 0, 0, 0.12) !important;
+
+        margin-bottom: 20px;
+    }
+
+    &__btn-radius {
+        border-radius: 8px !important;
+        height: 42px !important;
+    }
+}
+
+.action-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    
+}
+

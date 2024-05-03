@@ -37,7 +37,7 @@ export class ClientService {
   }
 
   inLineFilter(responceClients: Client[]) {
-    return responceClients.filter(item => item.Status == 0)
+    return responceClients.filter(item => item.Status == 0).sort((prev, curr) => +curr.id - +prev.id)
   }
 
   public getClients() {
